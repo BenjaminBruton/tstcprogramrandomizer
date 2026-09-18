@@ -106,8 +106,8 @@ export const CAMERA_TARGETS = {
 export const HANGMAN_CONFIG = {
     MAX_WRONG_GUESSES: 5,  // 5 wrong guesses before game over
     EXCLUDE_CHARS: [' ', '-', '\'', '.', ',', '/', '&', '(', ')'],  // Auto-revealed special chars
-    DOOM_PHRASE: "HERES YOUR MONEY BACK GUARANTEE",  // Phrase that gets revealed
-    DOOM_WORDS: ["HERES", "YOUR", "MONEY", "BACK", "GUARANTEE"],
+    DOOM_PHRASE: "OH NO YOU ARE WRONG",  // Phrase that gets revealed
+    DOOM_WORDS: ["OH", "NO", "YOU", "ARE", "WRONG"],
     LOSE_MESSAGE: "You couldn't secure student jobs and they got their money back :(",
     WIN_MESSAGE: "Your students landed high paying jobs in Texas!"
 };
