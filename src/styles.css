@@ -262,3 +262,73 @@ body.dragging {
 #start-button:active {
     transform: scale(0.95);
 }
+
+/* Virtual Keyboard for Mobile */
+#virtual-keyboard {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    z-index: 100;
+    pointer-events: all;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.virtual-key {
+    width: 40px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.virtual-key:active {
+    transform: scale(0.9);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.virtual-key.used {
+    background: rgba(100, 100, 100, 0.5);
+    border-color: #666;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.virtual-key.correct {
+    background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
+    border-color: #0f0;
+}
+
+.virtual-key.wrong {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    border-color: #f00;
+}
+
+@media (max-width: 768px) {
+    .virtual-key {
+        width: 35px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    #virtual-keyboard {
+        gap: 6px;
+        padding: 10px;
+    }
+}

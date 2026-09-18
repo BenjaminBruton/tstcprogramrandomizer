@@ -4,7 +4,7 @@ import { SCHOOL_PROGRAMS, HANGMAN_CONFIG, COLORS } from '../constants.js';
 import { Materials } from '../utils/Materials.js';
 
 export class Hangman {
-    constructor(scene, position = { x: 75, y: 0, z: 0 }) {
+    constructor(scene, position = { x: 75, y: 0, z: 0 }, isMobile = false) {
         this.scene = scene;
         this.position = position;
         this.selectedProgram = null;
@@ -15,6 +15,8 @@ export class Hangman {
         this.onComplete = null;
         this.keyboardListener = null;
         this.gameOver = false; // Track if game has ended (win or lose)
+        this.isMobile = isMobile;
+        this.virtualKeyboard = null;
     }
 
     init(freebieLetters = []) {
@@ -29,6 +31,11 @@ export class Hangman {
         this.createPuzzleBoard();
         this.createDoomContraption();
         this.setupKeyboardInput();
+        
+        // Show virtual keyboard on mobile
+        if (this.isMobile) {
+            this.createVirtualKeyboard();
+        }
     }
 
     createPuzzleBoard() {
@@ -276,9 +283,41 @@ export class Hangman {
         }
     }
 
+    createVirtualKeyboard() {
+        const keyboard = document.getElementById('virtual-keyboard');
+        if (!keyboard) return;
+        
+        keyboard.innerHTML = '';
+        keyboard.style.display = 'flex';
+        
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        
+        letters.forEach(letter => {
+            const key = document.createElement('div');
+            key.className = 'virtual-key';
+            key.textContent = letter;
+            key.dataset.letter = letter;
+            
+            key.addEventListener('click', () => {
+                if (!key.classList.contains('used')) {
+                    this.handleGuess(letter);
+                    key.classList.add('used');
+                }
+            });
+            
+            keyboard.appendChild(key);
+        });
+        
+        this.virtualKeyboard = keyboard;
+        console.log('⌨️ Virtual keyboard created for mobile');
+    }
+
     cleanup() {
         if (this.keyboardListener) {
             window.removeEventListener('keydown', this.keyboardListener);
+        }
+        if (this.virtualKeyboard) {
+            this.virtualKeyboard.style.display = 'none';
         }
     }
 }

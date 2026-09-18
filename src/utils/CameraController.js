@@ -1,11 +1,14 @@
 import gsap from 'gsap';
-import { CAMERA_POSITIONS, CAMERA_TARGETS } from '../constants.js';
+import { CAMERA_POSITIONS, CAMERA_POSITIONS_MOBILE, CAMERA_TARGETS } from '../constants.js';
 
 export class CameraController {
-    constructor(camera, controls = null) {
+    constructor(camera, controls = null, isMobile = false) {
         this.camera = camera;
         this.controls = controls;
         this.isAnimating = false;
+        this.isMobile = isMobile;
+        this.positions = isMobile ? CAMERA_POSITIONS_MOBILE : CAMERA_POSITIONS;
+        console.log('📹 Camera using', isMobile ? 'MOBILE' : 'DESKTOP', 'positions');
     }
 
     moveTo(phase, duration = 0.0001, onComplete = null) {  // Instant!
@@ -14,7 +17,7 @@ export class CameraController {
             return;
         }
 
-        const targetPos = CAMERA_POSITIONS[phase];
+        const targetPos = this.positions[phase];
         const targetLookAt = CAMERA_TARGETS[phase];
 
         if (!targetPos || !targetLookAt) {

@@ -23,8 +23,17 @@ class TSTCProgramRandomizer {
         this.hangman = null;
         this.frameCount = 0;
         this.gameStarted = false;
+        this.isMobile = this.detectMobile();
         
         this.init();
+    }
+
+    detectMobile() {
+        const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const smallScreen = window.innerWidth < 768;
+        const isMobile = mobile || smallScreen;
+        console.log('📱 Mobile device detected:', isMobile);
+        return isMobile;
     }
 
     async init() {
@@ -57,7 +66,8 @@ class TSTCProgramRandomizer {
         console.log('Creating camera controller...');
         this.cameraController = new CameraController(
             this.sceneSetup.getCamera(),
-            this.sceneSetup.getControls()
+            this.sceneSetup.getControls(),
+            this.isMobile
         );
 
         // Setup interaction listeners
@@ -244,7 +254,8 @@ class TSTCProgramRandomizer {
                 // Initialize hangman
                 this.hangman = new Hangman(
                     this.sceneSetup.getScene(),
-                    { x: 54, y: 0, z: 0 }
+                    { x: 54, y: 0, z: 0 },
+                    this.isMobile
                 );
                 this.hangman.init(letters);
                 this.hangman.onComplete = (program) => this.onHangmanComplete(program);

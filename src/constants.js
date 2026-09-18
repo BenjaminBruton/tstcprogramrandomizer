@@ -77,12 +77,21 @@ export const FRUIT_COLORS = {
 
 // Camera Positions for Each Phase (must match PHASES keys!)
 // Machines are 18 units apart for proper spacing without overlap
+// Mobile gets pulled back for better fit
 export const CAMERA_POSITIONS = {
     PLINKO_PHASE: { x: 0, y: 5, z: 15 },
     SLOT_PHASE: { x: 18, y: 5, z: 15 },
     JUICER_PHASE: { x: 36, y: 8, z: 18 },
     HANGMAN_PHASE: { x: 54, y: 6, z: 20 },
     REVEAL_PHASE: { x: 27, y: 25, z: 50 }  // Higher and further back to see all machines
+};
+
+export const CAMERA_POSITIONS_MOBILE = {
+    PLINKO_PHASE: { x: 0, y: 8, z: 25 },     // Pulled back and up
+    SLOT_PHASE: { x: 18, y: 8, z: 25 },
+    JUICER_PHASE: { x: 36, y: 10, z: 28 },
+    HANGMAN_PHASE: { x: 54, y: 10, z: 30 },
+    REVEAL_PHASE: { x: 27, y: 30, z: 60 }    // Much further back
 };
 
 export const CAMERA_TARGETS = {
