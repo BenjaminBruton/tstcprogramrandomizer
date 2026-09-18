@@ -180,14 +180,24 @@ export class Hangman {
     }
 
     guessLetter(letter) {
-        if (this.revealedLetters.has(letter)) return;
+        // Don't accept input if game is over
+        if (this.gameOver) {
+            console.log('⚠️ Game over, ignoring input');
+            return;
+        }
+        
+        if (this.revealedLetters.has(letter)) {
+            console.log('⚠️ Letter already guessed:', letter);
+            return;
+        }
+        
         this.revealedLetters.add(letter);
 
         if (this.normalizedProgram.includes(letter)) {
-            console.log('Correct:', letter);
+            console.log('✅ Correct:', letter);
             this.revealLetter(letter);
         } else {
-            console.log('Wrong:', letter);
+            console.log('❌ Wrong:', letter);
             this.wrongGuesses++;
             this.buildDoomPiece();
         }
@@ -285,12 +295,18 @@ export class Hangman {
 
     createVirtualKeyboard() {
         const keyboard = document.getElementById('virtual-keyboard');
-        if (!keyboard) return;
+        if (!keyboard) {
+            console.error('❌ Virtual keyboard element not found!');
+            return;
+        }
         
         keyboard.innerHTML = '';
         keyboard.style.display = 'flex';
         
         const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        
+        console.log('⌨️ Creating virtual keyboard with', letters.length, 'keys');
+        console.log('   Program to guess:', this.normalizedProgram);
         
         letters.forEach(letter => {
             const key = document.createElement('div');
@@ -298,18 +314,42 @@ export class Hangman {
             key.textContent = letter;
             key.dataset.letter = letter;
             
-            key.addEventListener('click', () => {
-                if (!key.classList.contains('used')) {
-                    this.handleGuess(letter);
-                    key.classList.add('used');
+            // Use touchstart for better mobile response
+            const handleKeyPress = (e) => {
+                e.preventDefault(); // Prevent double-tap zoom
+                
+                if (key.classList.contains('used')) {
+                    console.log('⚠️ Key already used:', letter);
+                    return;
                 }
-            });
+                
+                console.log('📱 Virtual key pressed:', letter);
+                
+                // Mark as used immediately
+                key.classList.add('used');
+                
+                // Check if correct and add visual feedback
+                const isCorrect = this.normalizedProgram.includes(letter);
+                console.log('   Is correct?', isCorrect);
+                
+                if (isCorrect) {
+                    key.classList.add('correct');
+                } else {
+                    key.classList.add('wrong');
+                }
+                
+                // Actually process the guess
+                this.guessLetter(letter);
+            };
+            
+            key.addEventListener('click', handleKeyPress);
+            key.addEventListener('touchstart', handleKeyPress);
             
             keyboard.appendChild(key);
         });
         
         this.virtualKeyboard = keyboard;
-        console.log('⌨️ Virtual keyboard created for mobile');
+        console.log('✅ Virtual keyboard created with', keyboard.children.length, 'keys');
     }
 
     cleanup() {
