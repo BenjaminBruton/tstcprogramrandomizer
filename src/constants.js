@@ -42,7 +42,6 @@ export const SCHOOL_PROGRAMS = [
   "Electrical Lineworker",
   "Wind Energy",
   "Computer Networking",
-  "Cybersecurity",
   "Web Design & Development",
   "Aviation Maintenance",
   "Aircraft Pilot Training",
