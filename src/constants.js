@@ -32,7 +32,6 @@ export const SCHOOL_PROGRAMS = [
   "Surgical Technology",
   "Emergency Medical Services",
   "Building Construction",
-  "HVAC",
   "Electrical Construction/Solar",
   "Electrical Power & Controls",
   "Electrical Lineworker",
