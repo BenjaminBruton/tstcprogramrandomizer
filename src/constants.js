@@ -50,7 +50,6 @@ export const SCHOOL_PROGRAMS = [
   "Auto Collision",
   "Automotive",
   "Diesel",
-  "error",
 ];
 
 // Fruit Types for Slot Machine
