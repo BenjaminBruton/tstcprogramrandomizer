@@ -21,7 +21,6 @@ export const SCHOOL_PROGRAMS = [
   "Robotics",
   "Industrial Systems",
   "Welding",
-  "Business Management",
   "Education & Training",
   "Culinary Arts",
   "Occupational Safety",
