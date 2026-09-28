@@ -30,7 +30,6 @@ export const SCHOOL_PROGRAMS = [
   "Health Information/ Pre-Allied Health",
   "Vocational Nursing",
   "Surgical Technology",
-  "Emergency Medical Services",
   "Building Construction",
   "Electrical Construction/Solar",
   "Electrical Power & Controls",
