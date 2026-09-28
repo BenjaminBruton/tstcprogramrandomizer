@@ -13,9 +13,7 @@ export const SCHOOL_PROGRAMS = [
   "Developmental Education",
   "Liberal Arts",
   "Math/Natural Science",
-  "Automation (ETT)",
-  "Automation (MEC)",
-  "Automation (AAC)",
+  "Automation",
   "Instrumentation/Process Ops",
   "Precision Machining",
   "Robotics",
@@ -35,7 +33,6 @@ export const SCHOOL_PROGRAMS = [
   "Emergency Medical Services",
   "Building Construction",
   "HVAC",
-  "Plumbing",
   "Electrical Construction/Solar",
   "Electrical Power & Controls",
   "Electrical Lineworker",
@@ -48,6 +45,7 @@ export const SCHOOL_PROGRAMS = [
   "Auto Collision",
   "Automotive",
   "Diesel",
+  "Academics",
 ];
 
 // Fruit Types for Slot Machine
