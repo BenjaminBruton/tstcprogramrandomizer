@@ -19,9 +19,7 @@ export const SCHOOL_PROGRAMS = [
   "Robotics",
   "Industrial Systems",
   "Welding",
-  "Education & Training",
   "Culinary Arts",
-  "Occupational Safety",
   "Drafting and Design",
   "Biomedical Equipment",
   "Associate Degree Nursing",
@@ -41,7 +39,6 @@ export const SCHOOL_PROGRAMS = [
   "Aircraft Pilot Training",
   "Avionics",
   "Auto Collision",
-  "Automotive",
   "Diesel",
   "Academics",
 ];
