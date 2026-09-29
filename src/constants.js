@@ -10,6 +10,13 @@ export const PHASES = {
 // TSTC Programs List
 export const SCHOOL_PROGRAMS = [
   "Biology",
+  "Business Management",
+  "Plumbing",
+  "HVAC",
+  "Emergency MEdical Services",
+  "Automotive",
+  "Education & Technology",
+  "Occupational Safety",
   "Developmental Education",
   "Liberal Arts",
   "Math/Natural Science",
@@ -35,6 +42,8 @@ export const SCHOOL_PROGRAMS = [
   "Wind Energy",
   "Computer Networking",
   "Web Design & Development",
+  "Computer Programming",
+  "Cybersecurity",
   "Aviation Maintenance",
   "Aircraft Pilot Training",
   "Avionics",
